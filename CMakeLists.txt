@@ -38,7 +38,7 @@ add_definitions(${Typelib_CFLAGS})
 # This takes care of proper install locations:
 # We do our linking ourselves...
 set(OROCOS_NO_AUTO_LINKING TRUE)
-orocos_typekit(rtt-typelib SHARED
+orocos_library(rtt-typelib SHARED
     TypelibMarshallerBase.cpp ${mqsupport_sources})
 
 target_link_libraries(rtt-typelib

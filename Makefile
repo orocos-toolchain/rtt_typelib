@@ -1,14 +1,16 @@
-# This Makefile is here for 'rosmake' like systems. In case you don't use
-# ROS, it will create a build directory for you and build the package with
-# default settings. It will install it at the same location as the RTT is installed.
 ifdef ROS_ROOT
+default: install
 include $(shell rospack find mk)/cmake.mk
-else
-$(warning This Makefile builds this package with default settings)
-all:
-	mkdir -p build
-	cd build ; cmake .. -DINSTALL_PATH=orocos && make
-	echo -e "\n Now do 'make install' to install this package.\n"
+export PKG_CONFIG_PATH:=$(shell rospack find utilmm)/install/lib/pkgconfig
+EXTRA_CMAKE_FLAGS=-DCMAKE_INSTALL_PREFIX=`rospack find rtt`/install\
+                  -DLIBRARY_OUTPUT_PATH=`rospack find rtt_typelib`/lib
+
+#ifdef ROS_STACK_DIR_FINAL
+#EXTRA_CMAKE_FLAGS +=-DRTT_TYPELIB_PLUGIN_PATH="${ROS_STACK_DIR_FINAL}/orocos_toolchain_ros/rtt_typelib/install/lib/rtt_typelib"
+#endif
+
 install: all
-	cd build ; make install
+	mkdir -p build && cd build && cmake .. && ${MAKE} install
+else
+$(warning This Makefile only works with ROS rosmake. Without rosmake, create a build directory and run cmake ..)
 endif
