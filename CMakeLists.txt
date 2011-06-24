@@ -58,4 +58,4 @@ orocos_install_headers( TypelibMarshallerBase.hpp TypelibMarshaller.hpp
 #install(FILES ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc
 #    DESTINATION lib/pkgconfig)
 
-orocos_generate_package()
+orocos_generate_package(DEPENDS typelib)
