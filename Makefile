@@ -1,8 +1,8 @@
 ifdef ROS_ROOT
 default: install
 include $(shell rospack find mk)/cmake.mk
-export PKG_CONFIG_PATH:=$(shell rospack find utilmm)/install/lib/pkgconfig
-EXTRA_CMAKE_FLAGS=-DCMAKE_INSTALL_PREFIX=`rospack find rtt`/install\
+export PKG_CONFIG_PATH:=$(shell rospack find rtt)/../install/lib/pkgconfig
+EXTRA_CMAKE_FLAGS=-DCMAKE_INSTALL_PREFIX=`rospack find rtt`/../install\
                   -DLIBRARY_OUTPUT_PATH=`rospack find rtt_typelib`/lib
 
 #ifdef ROS_STACK_DIR_FINAL
