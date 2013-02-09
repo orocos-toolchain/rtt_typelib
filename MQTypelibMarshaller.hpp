@@ -1,7 +1,7 @@
 #ifndef OROGEN_MQ_TYPELIB_MARSHALLER_HPP
 #define OROGEN_MQ_TYPELIB_MARSHALLER_HPP
 
-#include <rtt/transports/mqueue/MQTemplateProtocol.hpp>
+#include <rtt/transports/mqueue/MQTemplateProtocolBase.hpp>
 
 namespace orogen_transports {
     class TypelibMarshallerBase;
@@ -21,7 +21,7 @@ namespace orogen_transports {
     };
 
     template<typename T>
-    class MQTypelibMarshaller : public RTT::mqueue::MQTemplateProtocol<T>, public MQTypelibMarshallerBase {
+    class MQTypelibMarshaller : public RTT::mqueue::MQTemplateProtocolBase<T>, public MQTypelibMarshallerBase {
     public:
         MQTypelibMarshaller(orogen_transports::TypelibMarshallerBase* marshaller)
             : MQTypelibMarshallerBase(marshaller) {}
