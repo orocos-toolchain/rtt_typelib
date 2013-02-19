@@ -53,6 +53,18 @@ orocos_install_headers( TypelibMarshallerBase.hpp TypelibMarshaller.hpp
     TypelibTransportPlugin.hpp
     INSTALL include/rtt/typelib)
 
+find_package(Doxygen)
+if (DOXYGEN_FOUND)
+    if (DOXYGEN_DOT_EXECUTABLE)
+        SET(DOXYGEN_DOT_FOUND YES)
+    elSE(DOXYGEN_DOT_EXECUTABLE)
+        SET(DOXYGEN_DOT_FOUND NO)
+        SET(DOXYGEN_DOT_EXECUTABLE "")
+    endif(DOXYGEN_DOT_EXECUTABLE)
+    configure_file(Doxyfile.in Doxyfile @ONLY)
+    add_custom_target(doc doxygen Doxyfile)
+endif(DOXYGEN_FOUND)
+
 # custom written .pc file, so don't use orocos_generated_package():
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/rtt-typelib.pc.in
 #    ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc @ONLY)
