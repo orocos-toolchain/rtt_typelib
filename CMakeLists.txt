@@ -2,24 +2,12 @@ cmake_minimum_required(VERSION 2.6)
 project(rtt_typelib)
 include(FindPkgConfig)
 
-#
-# Do setup in case of ros package, If ROS_ROOT is set, it is
-# recommended to use RTT/OCL through the ros packages.
-#
-set (ROS_ROOT $ENV{ROS_ROOT} )
-if (ROS_ROOT)
-  include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
-  rosbuild_init()
-  rosbuild_find_ros_package( rtt )
-  set( RTT_HINTS HINTS ${rtt_PACKAGE_PATH}/../install )
-endif()
-# Set the CMAKE_PREFIX_PATH in case you're not using Orocos through ROS
-# for helping these find commands find RTT.
-find_package(OROCOS-RTT REQUIRED ${RTT_HINTS})
+# Source the env.sh script of the Orocos Toolchain in order to find RTT:
+find_package(OROCOS-RTT)
 include( ${OROCOS-RTT_USE_FILE} )
 
 if (NOT OROCOS-RTT_FOUND)
-  message(FATAL_ERROR "Could not Find Orocos-RTT.")
+  message(FATAL_ERROR "Could not Find Orocos-RTT. Please use 'source env.sh' in your Orocos Toolchain directory and try to rebuild this package.")
 endif()
 
 if (OROCOS-RTT_MQUEUE_FOUND)
