@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 2.6)
 project(rtt_typelib)
 include(FindPkgConfig)
 
+set(NO_ROS_PACKAGE TRUE)
+
 # Source the env.sh script of the Orocos Toolchain in order to find RTT:
 find_package(OROCOS-RTT)
 include( ${OROCOS-RTT_USE_FILE} )
