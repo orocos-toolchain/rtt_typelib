@@ -1,0 +1,26 @@
+<package>
+  <name>rtt_typelib</name>
+  <version>2.6.0</version>
+  <description>
+    Orocos/RTT typelib bindings
+  </description>
+  <author>Sylvain Joyeux/sylvain.joyeux@m4x.org</author>
+  <license>GPL v2 or later</license>
+  <maintainer email="orocos-dev@lists.mech.kuleuven.be">OCL Development Team</maintainer>
+  <url>http://doudou.github.com/orogen</url>
+
+  <buildtool_depend>cmake</buildtool_depend>
+  <export>
+    <build_type>
+      cmake
+    </build_type>
+  </export>
+
+  <build_depend>rtt</build_depend>
+  <build_depend>typelib</build_depend>
+
+  <run_depend>rtt</run_depend>
+  <run_depend>typelib</run_depend>
+
+</package>
+
