@@ -24,6 +24,8 @@ pkg_check_modules(Typelib REQUIRED typelib)
 include_directories(${Typelib_INCLUDE_DIRS})
 link_directories(${Typelib_LIBRARY_DIRS})
 add_definitions(${Typelib_CFLAGS})
+find_library(Typelib_LIBRARY typeLib HINTS ${Typelib_LIBRARY_DIRS})
+set(Typelib_LIBRARIES ${Typelib_LIBRARY})
 
 # This takes care of proper install locations:
 # We do our linking ourselves...
@@ -60,5 +62,4 @@ endif(DOXYGEN_FOUND)
 #    ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc @ONLY)
 #install(FILES ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc
 #    DESTINATION lib/pkgconfig)
-
 orocos_generate_package(DEPENDS typelib)
