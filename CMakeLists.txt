@@ -62,4 +62,5 @@ endif(DOXYGEN_FOUND)
 #    ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc @ONLY)
 #install(FILES ${CMAKE_CURRENT_BINARY_DIR}/rtt-typelib.pc
 #    DESTINATION lib/pkgconfig)
+INSTALL(FILES package.xml DESTINATION share/rtt_typelib)
 orocos_generate_package(DEPENDS typelib)
