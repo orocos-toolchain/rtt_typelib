@@ -64,3 +64,9 @@ endif(DOXYGEN_FOUND)
 #    DESTINATION lib/pkgconfig)
 INSTALL(FILES package.xml DESTINATION share/rtt_typelib)
 orocos_generate_package(DEPENDS typelib)
+file(READ ${CMAKE_CURRENT_BINARY_DIR}/rtt_typelib-${OROCOS_TARGET}.pc INSTALLED_PC_CONTENTS)
+string(REPLACE "include/orocos" "include" INSTALLED_PC_CONTENTS
+    "${INSTALLED_PC_CONTENTS}")
+file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/rtt_typelib-${OROCOS_TARGET}.pc
+    ${INSTALLED_PC_CONTENTS})
+
